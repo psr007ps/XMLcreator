@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 
 	public class CreateXmlFileDemo {
-		private static final String EXCEL_FILE_LOCATION = "C:\\Bikash Bhaiya Divestiture\\Divest.xls";
+		private static final String EXCEL_FILE_LOCATION = "C:\\csvfile\\Divest.xls";
 		private static long counter=0000; 
 
 	   public static void main(String argv[]) {
@@ -214,7 +214,7 @@ attrType2 = doc.createAttribute("nativeIdentity");
 		       	       	DOMSource source = new DOMSource(doc);
 	                    
       		         counter+=1;
-      		         File file1=new File("C:\\Bikash Bhaiya Divestiture\\Disable\\"+counter+"_EmpNO_"+PersonID+".xml");
+      		         File file1=new File("C:\\csvfie\\Disable\\"+counter+"_EmpNO_"+PersonID+".xml");
       		         file1.createNewFile();
       		         StreamResult result = new StreamResult(file1);
       		       transformer.setOutputProperty(OutputKeys.INDENT,"yes");
