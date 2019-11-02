@@ -10,7 +10,7 @@ import jxl.Workbook;
 
 public class ExcelSheetRead {
 
-	private static final String EXCEL_FILE_LOCATION = "C:\\Bikash Bhaiya Divestiture\\Divest.xls";
+	private static final String EXCEL_FILE_LOCATION = "C:\\csvfile\\Divest.xls";
 
     public static void main(String[] args) {
 
