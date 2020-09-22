@@ -1,14 +1,14 @@
 package com.xml.file;
 
 
-	import javax.xml.parsers.DocumentBuilderFactory;
-	import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
-	import javax.xml.transform.TransformerFactory;
-	import javax.xml.transform.dom.DOMSource;
-	import javax.xml.transform.stream.StreamResult;
-	import org.w3c.dom.Attr;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DocumentType;
@@ -28,89 +28,81 @@ import java.util.ArrayList;
 		private static long counter=0000; 
 
 	   public static void main(String argv[]) {
-		   Workbook workbook = null;
+		Workbook workbook = null;
 
 	      try {
-	    	  File inputWorkbook = new File(EXCEL_FILE_LOCATION);
-	            Workbook w;
-	         
-	         
-	         
-	         
-	         
-	                w = Workbook.getWorkbook(inputWorkbook);
-	                // Get the first sheet
-	                Sheet sheet = w.getSheet(0);
-	                // Loop over first 10 column and lines
+	    	File inputWorkbook = new File(EXCEL_FILE_LOCATION);
+	        Workbook w;
+		w = Workbook.getWorkbook(inputWorkbook);
+		// Get the first sheet
+		Sheet sheet = w.getSheet(0);
+		// Loop over first 10 column and lines
 
-	                for (int i = 0; i < sheet.getRows(); i++) {
-	                	
-	                	
-	                String ContinuumNativeID= null;
-	                String ADNUPOCNativeID= null;
-	                String PersonID= null;
-	                ArrayList list1=new ArrayList<>();
-	                        for (int j = 0; j < sheet.getColumns(); j++) {
-	                            Cell cell = sheet.getCell(j,i);
-	                            
-	                            list1.add(cell.getContents());
-	                            
-	                            
-	                        }
-	                        ContinuumNativeID=(String)list1.get(0);
-                            ADNUPOCNativeID=(String)list1.get(1);
-                           PersonID=(String)list1.get(2);
-	                	
-	                        DocumentBuilderFactory dbFactory =
-			       	       	         DocumentBuilderFactory.newInstance();
-			       	       	         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-			       	       	         Document doc = dBuilder.newDocument();
-			       	       	   
-			       	       	        		 
-			       	       	   	       	       	         
-			       	        	 Element rootElement = doc.createElement("Attributes");
-			       		         doc.appendChild(rootElement);
-			       		      
-			       		         // supercars element
-			       		         Element supermap = doc.createElement("Map");
-			       		         rootElement.appendChild(supermap);
+		for (int i = 0; i < sheet.getRows(); i++) {
 
-	       		         // setting attribute to element
-	       		      
-	       		         // carname element
-	       		         
-	       		     
-	       		    	 Element entryname = doc.createElement("entry");
-	       		         Attr attrType1 = doc.createAttribute("key");
-	       		         attrType1.setValue("launcher");
-	       		      entryname.setAttributeNode(attrType1);
-	                  Attr attrType2 = doc.createAttribute("value");
-	       		      attrType2.setValue("2057666");
-	       		      entryname.setAttributeNode(attrType2);
-	       		   supermap.appendChild(entryname);
-	       		         
-	       		      entryname = doc.createElement("entry");
-	       		          attrType1 = doc.createAttribute("key");
-	       		         attrType1.setValue("identityName");
-	       		      entryname.setAttributeNode(attrType1);
-	                   attrType2 = doc.createAttribute("value");
-	       		      attrType2.setValue(PersonID);
-	       		      entryname.setAttributeNode(attrType2);
-	       		   supermap.appendChild(entryname);
-	       		         
-	       		      entryname = doc.createElement("entry");
-       		          attrType1 = doc.createAttribute("key");
-       		         attrType1.setValue("flow");
-       		      entryname.setAttributeNode(attrType1);
-                   attrType2 = doc.createAttribute("value");
-       		      attrType2.setValue("AccountsRequest");
-       		      entryname.setAttributeNode(attrType2);
-       		   supermap.appendChild(entryname);
-       		   
-       		Element entryname2 = doc.createElement("entry");
-       		attrType1 = doc.createAttribute("key");
-		         attrType1.setValue("plan");
-		      entryname2.setAttributeNode(attrType1);
+
+		String ContinuumNativeID= null;
+		String ADNUPOCNativeID= null;
+		String PersonID= null;
+		ArrayList list1=new ArrayList<>();
+		for (int j = 0; j < sheet.getColumns(); j++) {
+		    Cell cell = sheet.getCell(j,i);
+
+		    list1.add(cell.getContents());
+
+
+		}
+		ContinuumNativeID=(String)list1.get(0);
+		ADNUPOCNativeID=(String)list1.get(1);
+		PersonID=(String)list1.get(2);
+
+		DocumentBuilderFactory dbFactory =
+				 DocumentBuilderFactory.newInstance();
+				 DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				 Document doc = dBuilder.newDocument();
+
+
+
+		 Element rootElement = doc.createElement("Attributes");
+		 doc.appendChild(rootElement);
+
+
+		 Element supermap = doc.createElement("Map");
+		 rootElement.appendChild(supermap);
+
+			 // setting attribute to element
+
+		Element entryname = doc.createElement("entry");
+		Attr attrType1 = doc.createAttribute("key");
+		attrType1.setValue("launcher");
+		entryname.setAttributeNode(attrType1);
+		Attr attrType2 = doc.createAttribute("value");
+		attrType2.setValue("2057666");
+		entryname.setAttributeNode(attrType2);
+		supermap.appendChild(entryname);
+
+		entryname = doc.createElement("entry");
+		attrType1 = doc.createAttribute("key");
+		attrType1.setValue("identityName");
+		entryname.setAttributeNode(attrType1);
+		attrType2 = doc.createAttribute("value");
+		attrType2.setValue(PersonID);
+		entryname.setAttributeNode(attrType2);
+		supermap.appendChild(entryname);
+
+		entryname = doc.createElement("entry");
+		attrType1 = doc.createAttribute("key");
+		attrType1.setValue("flow");
+		entryname.setAttributeNode(attrType1);
+		attrType2 = doc.createAttribute("value");
+		attrType2.setValue("AccountsRequest");
+		entryname.setAttributeNode(attrType2);
+		supermap.appendChild(entryname);
+
+		Element entryname2 = doc.createElement("entry");
+		attrType1 = doc.createAttribute("key");
+		attrType1.setValue("plan");
+		entryname2.setAttributeNode(attrType1);
 		      
        		   
        		Element entryname1 = doc.createElement("value");
@@ -126,7 +118,7 @@ import java.util.ArrayList;
 	         attrType1.setValue("Continuum");
 	      entryname.setAttributeNode(attrType1);
 	      
-   attrType2 = doc.createAttribute("nativeIdentity");
+   	      attrType2 = doc.createAttribute("nativeIdentity");
 	      attrType2.setValue(ContinuumNativeID);
 	      entryname.setAttributeNode(attrType2);
 	      
@@ -140,11 +132,11 @@ import java.util.ArrayList;
        		{
 	      entryname = doc.createElement("AccountRequest");
      		
-	         attrType1 = doc.createAttribute("application");
-	         attrType1.setValue("Active Directory - NUPOC");
+	      attrType1 = doc.createAttribute("application");
+	      attrType1.setValue("Active Directory - NUPOC");
 	      entryname.setAttributeNode(attrType1);
 	      
-attrType2 = doc.createAttribute("nativeIdentity");
+	      attrType2 = doc.createAttribute("nativeIdentity");
 	      attrType2.setValue(ADNUPOCNativeID);
 	      entryname.setAttributeNode(attrType2);
 	      
@@ -155,47 +147,14 @@ attrType2 = doc.createAttribute("nativeIdentity");
 	      entryname3.appendChild(entryname);
        		}
 	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
-	      
        		entryname3.appendChild(entryname);
        		entryname1.appendChild(entryname3);
        		entryname2.appendChild(entryname1);
        		   
        		
 		      supermap.appendChild(entryname2);
-		      
-		      
-		  
-       		   
-
-		      
-	       		       
 		         
 		         String globalCellValue=null;
-	       		     
-	       		       
-	                   
-	   	       		          
-	   	       		          
-	   	       		          
-	   	       		          
-	   	       		          
-	   	       		          
-	   	       		         
 	                      
 	             // write the content into xml file
 	                    
