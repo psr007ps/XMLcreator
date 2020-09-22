@@ -54,16 +54,12 @@ public class CreateXmlFileTermination {
        	       	   	       	       	         
        	        	 Element rootElement = doc.createElement("Attributes");
        		         doc.appendChild(rootElement);
-       		      
-       		         // supercars element
+
        		         Element supermap = doc.createElement("Map");
        		         rootElement.appendChild(supermap);
 
        		         // setting attribute to element
-       		      
-       		         // carname element
-       		         
-       		     
+     		     
        		    	 Element entryname = doc.createElement("entry");
        		         Attr attrType1 = doc.createAttribute("key");
        		         attrType1.setValue("requestType");
@@ -81,35 +77,25 @@ public class CreateXmlFileTermination {
 		      attrType2.setValue("8123");
 		      entryname.setAttributeNode(attrType2);
 		   supermap.appendChild(entryname);
-       		         
-       		      
-	         
-	         
-       		 
-       		   
-       		       System.out.println(sheet.getColumns());
+   		       System.out.println(sheet.getColumns());
        		    System.out.println(sheet.getRows());
                     for (int j = 1; j < sheet.getColumns(); j++) {
                         Cell cell = sheet.getCell(j,i);
                         String cellValue = cell.getContents();
                        System.out.println(j+"_-"+i+"_"+cellValue);
                             
-                            	entryname = doc.createElement("entry");
-                            
-                            	
-                            
-                            
+                           entryname = doc.createElement("entry");
+			    
                             if(j==1){
-    	   	       			
-    	   		   	       		userName=cellValue;
-    	   		   	       		}
+    	   		   	 userName=cellValue;
+    	   		   }
     	   	       		          
-    	   	       		    if(j==2){
-    	   	       		    if(!cellValue.equals("")){
-    	   	       		userName=userName+"_"+cellValue;}
-    	   	       		    }
-    	   	       		    
-    	   	       		if(j==3){
+			    if(j==2){
+			    if(!cellValue.equals("")){
+			userName=userName+"_"+cellValue;}
+			    }
+
+			if(j==3){
     	   	       			
     	   	      	if(!cellValue.equals("")){
     	   	       		userName=userName+"_"+cellValue;}
@@ -130,29 +116,13 @@ public class CreateXmlFileTermination {
 	                            supermap.appendChild(entryname);
 	   	       	
                             }
-   	       		          
-   	       		          
-   	       		          
-   	       		          
-   	       		          
-   	       		          
-   	       		         
-                           
-                          
-                            
-                        
-
                     }
                 
              // write the content into xml file
                     
                     
                     TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	       	       	Transformer transformer = transformerFactory.newTransformer();
-	       	       	
-	       	    
-	       	       	
-	       	       	
+	       	       	Transformer transformer = transformerFactory.newTransformer();	       	
 	       	       	transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 	       	       	transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "no");
 	       	       	transformer.setOutputProperty(OutputKeys.METHOD, "xml");
@@ -184,12 +154,7 @@ public class CreateXmlFileTermination {
   		      
   		         transformer.transform(source, consoleResult);
   		        
-         
          // root element
-        
-        	
-        
-         
          
   		          }}catch (Exception e) {
          e.printStackTrace();
